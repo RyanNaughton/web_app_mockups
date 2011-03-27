@@ -1,0 +1,300 @@
+@import "compass/css3";
+@import "settings/gradient";
+@import "settings/multi-shadow";
+@import "settings/multi-transition";
+@import "settings/vars";
+
+/* ==================== */
+/* = Main UI CSS File = */
+/* ==================== */
+
+$color1: #C6D4D9;
+$color2: #669DE8;
+$color3: #DBAF3C;
+$color4: #BF4904;
+$color5: #A62F03;
+
+/* ============== */
+/* = Header Bar = */
+/* ============== */
+body > header {
+	border-bottom: 1px solid $black25;
+	height: 60px;
+	position: relative;
+	min-width: 760px;
+	@include background-gradient-ie(#F8F8F8,#EEE);
+	a.logo {
+		display: block;
+		float: left;
+		width: 160px;
+		height: 60px;
+		text-align: center;
+		font: normal 10px/60px $font-family;
+		color: $black75;
+		background: $black10;
+	}
+	section.quick_search {
+		float: left;
+		div {
+			padding: 10px 0 10px 10px;
+			float: left;
+			input[type=text] {
+				display: block;
+				font: normal 14px/14px $font-family;
+				border: 1px solid $black50;
+				color: $black75;
+				width: 120px;
+				padding: 5px;
+				margin-bottom: 2px;
+				@include border-radius(5px);
+				@include multi-shadow(0 1px 0 $white75);
+				&:focus {
+					background-color: #FEE8D7;
+				}
+			}
+			label {
+				display: block;
+				font: normal 11px/12px $font-family;
+				color: $black50;
+			}
+			button {
+				display: block;
+				font: normal 14px/16px $font-family;
+				border: 1px solid $color2;
+				border: 1px solid darken($color4,10%);
+				padding: 5px 10px;
+				margin-bottom: 2px;
+				@include border-radius(5px);
+				@include multi-shadow(0 1px 0 $white75, 0 1px 0 $white50 inset);
+				@include background-gradient-ie(lighten($color5,20%),$color5);
+				color: #FFF;
+				font-weight: bold;
+				text-shadow: 0 -1px 0 $black25;
+			}
+		}
+	}
+	section.user_account {
+		position: absolute;
+		right: 0;
+		top: 0;
+		height: 60px;
+		border-left: 1px solid $black10;
+		a.user {
+			position: relative;
+			z-index: 100;
+			display: block;
+			margin: 10px;
+			@include border-radius(5px);
+			border: 1px solid transparent;
+			padding: 0;
+			text-decoration: none;
+			img {
+				display: block;
+				float: left;
+				margin: 5px;
+				@include border-radius(3px);
+			}
+			span {
+				color: $black75;
+				font: bold 11px/40px $font-family;
+				background: url(../img/user_arrow.png) 100% 0 no-repeat;
+				padding: 0 25px 0 5px;
+			}
+			&:hover {
+				background-color: #FFF;
+				color: #000;
+				border: 1px solid $black25;
+				@include border-radius(5px);
+			}
+			&.active {
+				background-color: #FFF;
+				color: #000;
+				border: 1px solid $black25;
+				border-bottom: 1px solid #FFF;
+				@include border-radius(5px 5px 0 0);
+			}
+		}
+		div.user_menu {
+			display: none;
+			position: absolute;
+			top: 51px;
+			right: 10px;
+			width: 160px;
+			background: #FFF;
+			border: 1px solid $black25;
+			@include border-radius(5px 0 5px 5px);
+			ul {
+				margin: 0;
+				list-style: none;
+				padding: 5px 0;
+				li.separator {
+					margin-top: 5px;
+					padding-top: 5px;
+					border-top: 1px solid $black10;
+				}
+				li a {
+					display: block;
+					font: normal 12px/24px $font-family;
+					text-decoration: none;
+					color: $black50;
+					padding: 0 10px;
+					&:hover {
+						background-color: $color1;
+						color: #FFF;
+					}
+				}
+			}
+		}
+	}
+}
+
+
+/* Wizard */
+h1.wizard {
+	font: normal 20px/20px $font-family;
+	width: 600px;
+	margin: 40px auto 10px auto;
+}
+section.wizard {
+	width: 600px;
+	margin: 0 auto;
+	border: 1px solid $color3;
+	&.photo_upload {
+		width: 400px;
+		@include multi-shadow(0 5px 10px $black25);
+		input[type=text]{
+			width: 366px;
+		}
+		div.wizard_body {
+			@include border-radius(10px 10px 0 0);
+		}
+	}
+	@include border-radius(10px);
+	header {
+		border-bottom: 1px solid $color3;
+		@include border-radius(10px 10px 0 0);
+		background-color: lighten($color3,30%);
+		@include multi-shadow(0 1px 0 $white75 inset);
+		ul {
+			display: table;
+			margin: 0 auto;
+			list-style: none;
+			li {
+				display: table-cell;
+				width: 120px;
+				background: url(../img/wizard.png) 50% -50px no-repeat;
+				padding: 15px 0;
+				&:first-child { background-position: 50% 0; }
+				&:last-child { background-position: 50% -100px; }
+				span {
+					display: block;
+					@include border-radius(20px);
+					height: 20px;
+					width: 20px;
+					@include background-gradient-ie(lighten($color5,60%),lighten($color5,50%));
+					border: 1px solid $black50;
+					margin: 0 auto;
+					@include multi-shadow(0 1px 0 $white50 inset);
+					@include background-clip(border-box);
+				}
+				&.active span,
+				&.completed span {
+					@include background-gradient-ie(lighten($color5,20%),$color5);
+				}
+			}
+		}
+		
+	}
+	footer {
+		border-top: 1px solid $color3;
+		@include border-radius(0 0 10px 10px);
+		background-color: lighten($color3,30%);
+		@include multi-shadow(0 1px 0 $white75 inset);
+		padding: 10px;
+		text-align: right;
+		button {
+			display: inline-block;
+			font: normal 14px/30px $font-family;
+			padding: 0 15px;
+			margin-left: 5px;
+			@include background-gradient-ie(lighten($color5,60%),lighten($color5,50%));
+			@include multi-shadow(0 1px 0 $white50 inset, 0 1px 0 $white75);
+			color: $black75;
+			border: 1px solid $black50;
+			@include border-radius(5px);
+			&.hot_button {
+				@include background-gradient-ie(lighten($color5,20%),$color5);
+				color: #FFF;
+				font-weight: bold;
+				text-shadow: 0 -1px 0 $black25;
+			}
+			&:active {
+				@include multi-shadow(0 2px 5px $black50 inset, 0 1px 0 $white75);
+			}
+		}
+	}
+	div.wizard_body {
+		padding: 10px;
+		background-color: #FFF;
+		h2 {
+			font: normal 16px/20px $font-family;
+			color: $color4;
+			margin: 0 0 10px 0;
+		}
+		h3 {
+			font: normal 14px/20px $font-family;
+			color: $black50;
+			margin: 10px 0;
+		}
+		p {
+			font: normal 12px/20px $font-family;
+			margin: 0 0 0 20px;
+			label {
+				padding-left: 5px;
+			}
+		}
+		div.label {
+			float: left;
+			width: 120px;
+			padding-bottom: 10px;
+			label {
+				font: bold 12px/30px $font-family;
+				color: $black75;
+				display: block;
+			}
+		}
+		div.label_field {
+			float: left;
+			width: 460px;
+			padding-bottom: 10px;
+			input[type=text] {
+				font: normal 16px/20px $font-family;
+				color: $black75;
+				border: 1px solid $color4;
+				padding: 5px;
+				@include border-radius(5px);
+				@include multi-shadow(0 1px 1px rgba(0,0,0,.1));
+				&:focus {
+					background-color: #FEE8D7;
+				}
+			}
+			input[type=radio] + label {
+				font: normal 14px/30px $font-family;
+				padding-left: 10px;
+				margin-right: 20px;
+				color: $black50;
+				display: inline-block;
+			}
+			select {
+				font: normal 16px/20px $font-family;
+				display: inline-block;
+			}
+			span {
+				display: block;
+				padding-top: 5px;
+				font: normal 11px/12px $font-family;
+				color: $black50;
+			}
+		}
+	}
+}
